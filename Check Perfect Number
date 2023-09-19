@@ -1,0 +1,61 @@
+# Problem-solving-C-
+
+#include <iostream>
+using namespace std;
+
+// Perfect Number : 
+// A perfect number is a positive integer that is equal to the sum of its proper divisors. A proper divisor of a number is a divisor that is less than the number itself
+//. For example, the proper divisors of 6 are 1, 2, and 3. The sum of these divisors is 6, so 6 is a perfect number.
+
+enum enCheckerPerfect{Perfect=1 , NotPerfect};
+
+int ReadNumber(string Massage){
+int Number;
+do {
+    cout << Massage ;
+    cin >> Number;
+}while (Number < 0 );
+
+return Number;
+}
+
+int DevisorSum(int Number) {
+
+    int Sum=0 ; 
+
+    for (int Counter =1 ;  Counter < Number; Counter ++  ) {
+
+        if (Number % Counter == 0 ) {
+
+            Sum += Counter ; 
+
+        }
+
+    }
+    
+    return Sum ;
+
+}
+
+enCheckerPerfect Checker(int Number) {
+
+    if (DevisorSum(Number)==  Number)
+    return enCheckerPerfect::Perfect;
+    else
+    return enCheckerPerfect::NotPerfect;
+}
+
+void PrintResult(int Number){
+
+    if (Checker(Number) == enCheckerPerfect::Perfect)
+    cout << Number << " Is Perfect." ;
+    else 
+    cout << Number <<  " Is Not Perfect.";
+}
+
+
+int main(){
+
+PrintResult(ReadNumber("Enter The Number Please : "));
+
+}
