@@ -1,0 +1,60 @@
+# Problem-solving-C-
+
+// Print Perfect Number From (1 To N )
+
+#include <iostream>
+using namespace std;
+
+enum enCheckerPerfect{Perfect=1 , NotPerfect};
+
+int ReadNumber(string Massage){
+int Number;
+do {
+    cout << Massage ;
+    cin >> Number;
+}while (Number < 0 );
+
+return Number;
+}
+
+int DevisorSum(int Number) {
+
+    int Sum=0 ; 
+
+    for (int Counter =1 ;  Counter < Number; Counter ++  ) {
+
+        if (Number % Counter == 0 ) {
+
+            Sum += Counter ; 
+
+        }
+    }
+    return Sum ;
+}
+
+enCheckerPerfect Checker(int Number) {
+
+    if (DevisorSum(Number)==  Number)
+    return enCheckerPerfect::Perfect;
+    else
+    return enCheckerPerfect::NotPerfect;
+}
+
+void PrintResult(int Number){
+
+for (Number ; Number > 1 ; Number --){ 
+
+    if (Checker(Number) == enCheckerPerfect::Perfect)
+
+    cout << Number << " Is Perfect." <<endl ; 
+
+   
+}
+
+}
+
+int main(){
+
+PrintResult(ReadNumber("Enter The Number Please : "));
+
+}
